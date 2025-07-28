@@ -1,0 +1,57 @@
+server:
+  port: 8087
+  servlet:
+    context-path: "/ead-authuser/"
+
+spring:
+  application:
+    name: ead-authuser-service
+  datasource:
+    url: jdbc:postgresql://localhost:5433/ead-authuser-v2
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show_sql: true
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non-contextual-creation: true
+  output:
+    ansi:
+      enabled: Always # Configura as cores no terminal do windows
+  rabbitmq:
+    addresses: amqps://wgrydoqs:VFGJQegZTobPz_5INWs9yM-WMv8sQhGf@beaver.rmq.cloudamqp.com/wgrydoqs
+
+ead:
+  api:
+    url:
+      course: "http://ead-course-service/ead-course"
+  broker:
+    exchange:
+      userEvent: ead.userevent
+
+logging:
+  level:
+    com.ead: TRACE
+    root: INFO
+    org.springframework.web: DEBUG
+    org.hibernate: INFO
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      circuitbreakerInstance:
+        slidingWindowSize: 30
+        permittedNumberOfCallsInHalfOpenState: 2
+        slidingWindowType: TIME_BASED
+        minimumNumberOfCalls: 2
+        waitDurationInOpenState: 15s
+        failureRateThreshold: 80 # 80% de falhas
+  retry:
+    instances:
+      retryInstance:
+        maxAttempts: 3
+        waitDuration: 5s
