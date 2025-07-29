@@ -33,6 +33,18 @@ ead:
     exchange:
       userEvent: ead.userevent
 
+authuser:
+  refreshscope:
+    name: Cristiano Lopes Duarte
+
+management:
+  endpoints:
+    web:
+      exposuse:
+        include:
+          - refresh
+          - health
+
 logging:
   level:
     com.ead: TRACE
