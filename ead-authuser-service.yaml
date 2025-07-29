@@ -35,12 +35,12 @@ ead:
 
 authuser:
   refreshscope:
-    name: Cristiano Lopes Duarte
+    name: Cristiano L Duarte UPTADED!!!
 
 management:
   endpoints:
     web:
-      exposuse:
+      exposure:
         include:
           - refresh
           - health
