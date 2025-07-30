@@ -25,15 +25,6 @@ spring:
   rabbitmq:
     addresses: amqps://wgrydoqs:VFGJQegZTobPz_5INWs9yM-WMv8sQhGf@beaver.rmq.cloudamqp.com/wgrydoqs
 
-logging:
-  level:
-    com.ead: TRACE
-    root: INFO
-    org.springframework.web: DEBUG
-    org.hibernate: INFO
-
-# TODO: broker props
-
 management:
   endpoints:
     web:
@@ -41,3 +32,11 @@ management:
         include:
           - refresh
           - health
+
+logging:
+  level:
+    com.ead: TRACE
+    root: INFO
+    org.springframework.web: DEBUG
+    org.hibernate: INFO
+# TODO: broker props
