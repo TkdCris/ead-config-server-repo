@@ -6,6 +6,33 @@ server:
 spring:
   application:
     name: ead-notification-service
+  datasource:
+    url: jdbc:postgresql://localhost:5433/ead-notification-v2
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show_sql: true
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non-contextual-creation: true
+  output:
+    ansi:
+      enabled: always # Para visualizar cores no console utilizando Windows
+  rabbitmq:
+    addresses: amqps://wgrydoqs:VFGJQegZTobPz_5INWs9yM-WMv8sQhGf@beaver.rmq.cloudamqp.com/wgrydoqs
+
+logging:
+  level:
+    com.ead: TRACE
+    root: INFO
+    org.springframework.web: DEBUG
+    org.hibernate: INFO
+
+# TODO: broker props
 
 management:
   endpoints:
